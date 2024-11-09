@@ -1,0 +1,24 @@
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "@modyfi/vite-plugin-yaml/modules",
+    ],
+    "lib": ["es2022", "DOM"],
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["./src/*"],
+    }
+  }
+}
