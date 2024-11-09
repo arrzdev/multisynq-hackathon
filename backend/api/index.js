@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const { SignJWT, jwtVerify } = require('jose');
+const { SignJWT } = require('jose');
 
 require('dotenv').config();
 
