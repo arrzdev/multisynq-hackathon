@@ -63,7 +63,7 @@ app.post("/signin", cors(corsOptions), async (req, res) => {
   //generate the JWT token that will be sent to the client
   const tokenData = {
     username: user.username,
-    userId: user._id
+    id: user._id
   }
 
   const jwtToken = await new SignJWT(tokenData)
@@ -108,7 +108,7 @@ app.post("/signup", cors(corsOptions), async (req, res) => {
   //generate the JWT token that will be sent to the client
   const tokenData = {
     username: body.username,
-    userId: newUser._id
+    id: newUser._id
   }
 
   const jwtToken = await new SignJWT(tokenData)
