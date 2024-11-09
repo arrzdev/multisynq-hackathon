@@ -124,5 +124,5 @@ app.post("/signup", cors(corsOptions), async (req, res) => {
 })
 
 //run api
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(3000, () => console.log("\nSYNQ CITY AUTH API 🚀"));
 module.exports = app;
