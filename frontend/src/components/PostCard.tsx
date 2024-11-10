@@ -74,7 +74,7 @@ const PostCard = ({
 
   return (
     <div 
-      className="container w-full h-auto p-5 bg-[#FDF0D5] rounded-2xl shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] space-y-2" 
+      className=" w-full h-auto p-5 bg-[#FDF0D5] rounded-2xl shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] space-y-2" 
       onClick={() => {
         setPostViewId(postData.eventId);
         setDrawerState("post-view");
