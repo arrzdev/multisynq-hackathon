@@ -13,7 +13,10 @@ export default function App() {
   const [geoLocationAvailable, setGeoLocationAvailable] = useState(true);
 
   const isAuthenticated = () => {
-    const token = localStorage.getItem('auth-token');
+    // TODO: REMOVE THIS WHEN ACTUAL LOGIN IS IMPLEMENTED
+    // const token = localStorage.getItem('auth-token');
+
+    const token = localStorage.getItem("username");
     if (token === null) return false;
 
     //we should actually verify if the token is valid but I am not able to do that

@@ -26,25 +26,29 @@ const Login = () => {
 
   const handleSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // TODO: REMOVED ACTUAL LOGIN BECAUSE OF CORS ISSUES
+    localStorage.setItem("username", loginData.username);
+    navigate("/");
     
-    const response = await fetch(`https://multisynq-hackathon.vercel.app/${isSignIn ? "signin" : "signup"}`, {
-      method: "POST",
-      body: JSON.stringify(loginData),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+    // const response = await fetch(`https://multisynq-hackathon.vercel.app/${isSignIn ? "signin" : "signup"}`, {
+    //   method: "POST",
+    //   body: JSON.stringify(loginData),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // });
 
-    const data = await response.json();
+    // const data = await response.json();
 
-    if (response.ok) {
-      //set the token in the local storage
-      localStorage.setItem("auth-token", data.token);
-      navigate("/");
-      return;
-    }
+    // if (response.ok) {
+    //   //set the token in the local storage
+    //   localStorage.setItem("auth-token", data.token);
+    //   navigate("/");
+    //   return;
+    // }
 
-    setError(data.message);
+    // setError(data.message);
   };
 
   return (
