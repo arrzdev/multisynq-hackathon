@@ -17,7 +17,12 @@ if (!MONGODB_URI) {
 // Define app
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: '*' })); // Allow any origin
+app.use(cors());
+
+const corsOptions = {
+  origin: ["*", "https://multisynq-hackathon-frontend.vercel.app"],
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI);
@@ -31,14 +36,14 @@ const authSchema = new mongoose.Schema({
 const Auth = mongoose.model('Auth', authSchema);
 
 // Routes
-app.get("/", (req, res) => {
+app.get("/", cors(), (req, res) => {
   res.json({
     message: "SYNQ CITY AUTH API 🚀"
   });
 });
 
 // SIGN-IN ENDPOINT
-app.post("/signin", async (req, res) => {
+app.post("/signin", cors(corsOptions), async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({
@@ -72,7 +77,7 @@ app.post("/signin", async (req, res) => {
 });
 
 // SIGN-UP ENDPOINT
-app.post("/signup", async (req, res) => {
+app.post("/signup", cors(corsOptions), async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({
