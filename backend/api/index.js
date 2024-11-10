@@ -20,10 +20,8 @@ app.use(express.json());
 
 // Configure CORS
 const corsOptions = {
-  origin: ["https://multisynq-hackathon-frontend.vercel.app"],
+  origin: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  credentials: true, // allowing credentials makes Access-Control-Allow-Origin not use '*'
-  allowedHeaders: ['Content-Type', 'Authorization']
 };
 app.use(cors(corsOptions));
 
