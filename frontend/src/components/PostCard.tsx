@@ -155,7 +155,7 @@ const PostCard = ({
 
         {/* Location Icon */}
         <div className="flex items-center w-1/2 justify-end">
-          <p className="text-left text-sm">near {postData.geoLocation.near || "unknown"}</p>
+          <p className="text-left text-sm">near {postData?.geoLocation?.near || "unknown"}</p>
           <IoLocationOutline size={23} color="#780000"/>
         </div>
 
