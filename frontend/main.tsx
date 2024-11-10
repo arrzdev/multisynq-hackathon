@@ -5,7 +5,7 @@ import App from '@/App'
 import "@/globals.css"
 
 //@ts-ignore - disables croquet nasty sync overlay
-CroquetReact.App.sync = false
+// CroquetReact.App.sync = false
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

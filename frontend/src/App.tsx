@@ -6,6 +6,7 @@ import CustomHookUsage from '@/views/CustomHookUsage';
 import GeoLocationImposer from '@/views/GeoLocationImposer';
 import { useEffect, useState } from 'react';
 import { requestGeoLocationPermission } from '@utils/geo';
+import SplashScreen from '@/views/SplashScreen';
 
 //define the app routes
 export default function App() {
@@ -43,23 +44,21 @@ export default function App() {
     });
   }, []);
 
-
-  
-
   return (
     <div>
-      {!geoLocationAvailable ? <GeoLocationImposer/> : (
-        <Router>
-          <Routes>
-          <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
-          <Route path="/login" element={<RedirectToHome/>}/>
-          <Route path="/test" element={<CustomHookUsage/>}/>
-
-          {/* 404 page */}
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-        </Router>
-      )}
+      {!geoLocationAvailable ? (<GeoLocationImposer/>) : (
+          <Router>
+            <Routes>
+            <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
+            <Route path="/login" element={<RedirectToHome/>}/>
+            <Route path="/test" element={<CustomHookUsage/>}/>
+  
+            {/* 404 page */}
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
+          </Router>
+        )
+      }
     </div>
   )
 }

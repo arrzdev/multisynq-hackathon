@@ -2,11 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#fdf0d5" />
     <title>Synced City</title>
+    <style>
+      #croquet_spinnerOverlay {
+        background-color: rgba(120, 0, 0, 0.5); /* Semi-transparent red background for overlay */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #croquet_loader {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+      }
+      #croquet_loader:before, #croquet_loader:after {
+        width: 15px;
+        height: 15px;
+        background-color: #fdf0d5;
+        border-radius: 50%;
+        animation: bounce 1.5s infinite ease-in-out;
+      }
+      #croquet_loader:before {
+        animation-delay: -0.3s;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="bg-[#fdf0d5]">
     <div id="root"></div>
     <script type="module" src="/main.tsx"></script>
   </body>

@@ -49,7 +49,8 @@ export type PostEvent = {
     username: string;
   };
   text: string;
-  location: string;
+  category: string;
+  geoLocation: {latitude: number, longitude: number, near: string};
   attachments: Attachment;
 }
 
