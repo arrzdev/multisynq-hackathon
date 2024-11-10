@@ -71,7 +71,7 @@ const Home = () => {
         }}/>
       <div className="flex-grow relative">
         {currentView === "list" ? (
-          <div className="flex flex-col p-2">
+          <div className="flex flex-col p-2 pb-24">
             {posts.map(post => (
               <PostCard key={post.eventId} {...{postData: post, userEvents, setEvents, setPostViewId}}/>
             ))}
