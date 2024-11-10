@@ -17,12 +17,15 @@ if (!MONGODB_URI) {
 // Define app
 const app = express();
 app.use(express.json());
-app.use(cors());
 
+// Configure CORS
 const corsOptions = {
-  origin: ["*", "https://multisynq-hackathon-frontend.vercel.app"],
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: ["https://multisynq-hackathon-frontend.vercel.app"],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true, // allowing credentials makes Access-Control-Allow-Origin not use '*'
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
+app.use(cors(corsOptions));
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI);
@@ -36,7 +39,7 @@ const authSchema = new mongoose.Schema({
 const Auth = mongoose.model('Auth', authSchema);
 
 // Routes
-app.get("/", cors(), (req, res) => {
+app.get("/", cors(corsOptions), (req, res) => {
   res.json({
     message: "SYNQ CITY AUTH API 🚀"
   });
@@ -116,7 +119,6 @@ app.post("/signup", cors(corsOptions), async (req, res) => {
     token: jwtToken
   });
 });
-
 
 // Run API
 app.listen(3000, () => console.log("\nSYNQ CITY AUTH/STORAGE API 🚀"));
