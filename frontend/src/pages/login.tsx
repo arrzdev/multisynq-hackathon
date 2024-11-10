@@ -27,7 +27,7 @@ const Login = () => {
   const handleSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    const response = await fetch(`http://localhost:3000/${isSignIn ? "signin" : "signup"}`, {
+    const response = await fetch(`https://multisynq-hackathon.vercel.app/${isSignIn ? "signin" : "signup"}`, {
       method: "POST",
       body: JSON.stringify(loginData),
       headers: {
