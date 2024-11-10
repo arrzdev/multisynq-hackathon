@@ -3,9 +3,14 @@ import Home from "@/pages/home"
 import NotFound from '@/pages/404';
 import Login from '@pages/login';
 import CustomHookUsage from '@/views/CustomHookUsage';
+import GeoLocationImposer from '@/views/GeoLocationImposer';
+import { useEffect, useState } from 'react';
+import { requestGeoLocationPermission } from '@utils/geo';
 
 //define the app routes
 export default function App() {
+  const [geoLocationAvailable, setGeoLocationAvailable] = useState(true);
+
   const isAuthenticated = () => {
     const token = localStorage.getItem('auth-token');
     if (token === null) return false;
@@ -30,16 +35,31 @@ export default function App() {
     return <Login/>;
   };
 
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
-        <Route path="/login" element={<RedirectToHome/>}/>
-        <Route path="/test" element={<CustomHookUsage/>}/>
+  // request geo location permission in the start
+  useEffect(() => {
+    requestGeoLocationPermission().catch(err => {
+      console.error("Error requesting geolocation permission", err);
+      setGeoLocationAvailable(false);
+    });
+  }, []);
 
-        {/* 404 page */}
-        <Route path="*" element={<NotFound/>}/>
-      </Routes>
-    </Router>
+
+  
+
+  return (
+    <div>
+      {!geoLocationAvailable ? <GeoLocationImposer/> : (
+        <Router>
+          <Routes>
+          <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
+          <Route path="/login" element={<RedirectToHome/>}/>
+          <Route path="/test" element={<CustomHookUsage/>}/>
+
+          {/* 404 page */}
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+        </Router>
+      )}
+    </div>
   )
 }
