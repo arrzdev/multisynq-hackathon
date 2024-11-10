@@ -7,7 +7,7 @@ const CustomHookUsage = () => {
   //but also allows to set the id for a specific user by passing a custom viewId
   const [userName, setUserName] = useState('')
   const [sessionName, setSessionName] = useState('')
-  const [count, setCount, countPerUser] = useCustomStateTogether('super-saa', 0, sessionName, true)
+  const [count, setCount, countPerUser] = useCustomStateTogether('super-saad', 0, sessionName, true)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
