@@ -12,7 +12,7 @@ const Navbar = ({
   return (
     <>
       {/* <Drawer  views={{"Add-Event": <NewEvent/>}}/> */}
-      <div className="fixed bottom-0 w-full h-20 bg-[#fdf0d5] rounded-t-3xl shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] flex justify-center items-center px-6 space-x-20">
+      <div className="fixed bottom-0 w-full z-10 h-20 bg-[#fdf0d5] rounded-t-3xl shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] flex justify-center items-center px-6 space-x-20">
         {/* IoMapOutline Border */}
         <BiBuildingHouse className="text-[#780000] cursor-pointer" size={40} onClick={() => setCurrentView("list")}/>
 

@@ -3,17 +3,22 @@ import { IoSearch } from "react-icons/io5";
 
 const Searchbar = ({searchCategory, setSearchCategory, searchQuery, setSearchQuery}: {searchCategory: string, setSearchCategory: (category: string) => void, searchQuery: string, setSearchQuery: (query: string) => void}) => {
   return (
-    <div className="sticky z-10 bg-transparent space-y-4 w-full p-2">
+    <div className="sticky z-10 bg-transparent space-y-4 w-full">
       {/* Search bar */}
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="container mx-auto h-14 bg-[#FDF0D5] shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] rounded-2xl cursor-pointer pl-4 pr-12 w-full"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <IoSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#780000]" size={30} />
+      <div className="flex flex-col">
+        <div className="relative w-full">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="py-2 h-14 w-full bg-[#FDF0D5] shadow-[0px_-2px_4px_rgba(0,0,0,0.5),0px_2px_4px_rgba(0,0,0,0.5)] rounded-2xl cursor-pointer pl-4 pr-12"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <IoSearch
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#780000] cursor-pointer"
+            size={30}
+          />
+        </div>
       </div>
 
       {/* Filter Buttons */}

@@ -10,6 +10,7 @@ import { getGeoLocation } from "@/utils/geo";
 import MapView from "@/views/MapView";
 import PostCard from "@components/PostCard";
 import { useEffect, useState } from "react"
+import { div } from "framer-motion/client";
 
 const Home = () => {
   const {username, id} = getUserData();
@@ -62,16 +63,19 @@ const Home = () => {
 
     setPosts(filteredPosts);
   }, [eventsPerUser, searchQuery, searchCategory])
+
   return (
-    <div className="flex flex-col h-full bg-[#fdf0d5]">
-      <Searchbar {...{searchCategory, setSearchCategory, searchQuery, setSearchQuery}} />
+    <div className="flex flex-col h-full bg-[#fdf0d5]"> 
       <Drawer views={{
         "new-post": <NewPost {...{setEvents, userEvents, geoLocation}}/>,
         "post-view": <PostView {...{postData: posts.find(p => p.eventId === postViewId), userEvents, setEvents}}/>
         }}/>
-      <div className="flex-grow relative">
+      <Navbar setCurrentView={setCurrentView} />
+      <div className="px-4 pt-2 pb-24">
+        <Searchbar {...{searchCategory, setSearchCategory, searchQuery, setSearchQuery}} />
+        <div className="flex-grow relative">
         {currentView === "list" ? (
-          <div className="flex flex-col p-2 pb-24">
+          <div className="flex flex-col space-y-4 mt-4">
             {posts.map(post => (
               <PostCard key={post.eventId} {...{postData: post, userEvents, setEvents, setPostViewId}}/>
             ))}
@@ -79,8 +83,8 @@ const Home = () => {
         ) : (
           <MapView {...{geoLocation, posts, zoomLevel, setZoomLevel, setPostViewId}} />
         )}
+        </div>
       </div>
-      <Navbar setCurrentView={setCurrentView} />
     </div>
   )
 }

@@ -168,12 +168,12 @@ const NewEvent = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 px-10">
       {/* Title */}
       <h1 className="text-center font-bold text-xl">What's happening?</h1>
 
       {/* Input Box */}
-      <div className={`container mx-auto h-80 w-[80%] rounded-xl cursor-text border-solid border-2 border-[#780000] p-4 flex flex-col`}>
+      <div className={`container mx-auto h-80 rounded-xl cursor-text border-solid border-2 border-[#780000] p-4 flex flex-col`}>
         {/* Input Box */}
         <textarea
           className="text-bold text-[#000000]/70 border-none bg-transparent select-none resize-none flex-grow mb-4"
@@ -212,7 +212,7 @@ const NewEvent = ({
         </div>
       </div>
 
-      <div className="flex space-x-4 justify-start w-[80%] mx-auto">
+      <div className="flex space-x-4 justify-start w-full mx-auto">
         {["Music", "Sports", "Food", "Art"].map((name: string, index: number) => (
           <div 
             key={index} 
@@ -226,7 +226,7 @@ const NewEvent = ({
 
 
       {/* Chose events */}
-      <div className="flex flex-row mx-auto w-[80%] space-x-2">
+      <div className="flex flex-row mx-auto w-full space-x-2">
 
         {/* Image Picker */}
         <div>
@@ -349,7 +349,7 @@ const NewEvent = ({
       {/* Save Button */}
       <button 
         onClick={handleSubmit}
-        className="bg-[#780000] text-[#FDF0D5] font-semibold mx-auto h-10 w-[80%] rounded-full text-center flex justify-center items-center"
+        className="bg-[#780000] text-[#FDF0D5] font-semibold mx-auto h-10 w-full rounded-full text-center flex justify-center items-center"
       >
         Share
       </button>
