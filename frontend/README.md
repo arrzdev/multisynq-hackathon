@@ -1,44 +1,24 @@
-# Synced City
+# Synced City Project
 
-- Made some changes to the useStateTogetherWithPerUserValues to persist data when users disconnect and to use custom key values for the users connected to the channel
+## Overview
+Synced City is a dynamic web application designed to enhance urban experiences by providing a platform for users to interact with city events, locations, and community-driven content.
 
-App events can be:
- - type: post, like, comment,
+## Key Features
+- Interactive map and list views for exploring city events and locations.
+- User-generated posts with support for media attachments, polls, and audio.
+- Real-time collaboration and session management powered by React Together and Croquet.
 
-Posts can have the following structures:
-{
-  type: "post",
-  userId: string,
-  eventId: string,
-  text: string,
-  attachments: {
-    type: "media" | "audio" | "poll",
-    data: buffer[] | buffer | text[]
-  }
-},
+## Technologies Used
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds static types.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **React Together**: A library for building effortlessly multiuser applications.
+- **React Icons**: Utilized for adding icons from popular icon libraries.
 
-Poll answers have the following structure:
-{
-  type: "pollAnswer",
-  userId: string,
-  eventId: string,
-  postId: string,
-  answer: number // index of the option
-}
+## Setup and Installation
+1. Clone the repository.
+2. Install dependencies using `bun install`.
+3. Start the development server with `bun dev`.
 
-Likes have the following structure:
-{
-  type: "like",
-  userId: string,
-  eventId: string,
-  postId: string
-}
-
-Comments have the following structure:
-{
-  type: "comment",
-  userId: string,
-  eventId: string,
-  postId: string,
-  text: string
-}
+## Acknowledgements
+This project was built together with my beautiful girlfriend [Joana Marques](https://github.com/joanamarquees).
