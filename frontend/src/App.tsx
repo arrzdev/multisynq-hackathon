@@ -11,30 +11,18 @@ import SplashScreen from '@/views/SplashScreen';
 //define the app routes
 export default function App() {
   const [geoLocationAvailable, setGeoLocationAvailable] = useState(true);
-
-  const isAuthenticated = () => {
-    // TODO: REMOVE THIS WHEN ACTUAL LOGIN IS IMPLEMENTED
-    // const token = localStorage.getItem('auth-token');
-
-    const token = localStorage.getItem("username");
-    if (token === null) return false;
-
-    //we should actually verify if the token is valid but I am not able to do that
-    //here because this way of forcing auth doesn't not support jose async verification
-
-    return true;
-  };
+  const [splashScreen, setSplashScreen] = useState(true);
 
   // handle the redirect to the login page if the user is not logged in
   const RequireAuth = ({ children }: { children: JSX.Element }) => {
-    const auth = isAuthenticated();
+    const auth = localStorage.getItem("username");
     if (!auth) return <Navigate to="/login" replace/>;
     return children;
   };
 
   // handle the redirect to the home page if the user is already logged in
   const RedirectToHome = () => {
-    const auth = isAuthenticated();
+    const auth = localStorage.getItem("username");
     if (auth) return <Navigate to="/" replace/>;
     return <Login/>;
   };
@@ -45,11 +33,17 @@ export default function App() {
       console.error("Error requesting geolocation permission", err);
       setGeoLocationAvailable(false);
     });
+
+    // hide the splash screen after 5 seconds
+    setTimeout(() => {
+      setSplashScreen(false);
+    }, 5000);
   }, []);
 
   return (
     <div>
-      {!geoLocationAvailable ? (<GeoLocationImposer/>) : (
+      {splashScreen ? (<SplashScreen/>) : (
+        !geoLocationAvailable ? (<GeoLocationImposer/>) : (
           <Router>
             <Routes>
             <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
@@ -61,7 +55,7 @@ export default function App() {
           </Routes>
           </Router>
         )
-      }
+      )}
     </div>
   )
 }
