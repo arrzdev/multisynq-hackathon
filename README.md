@@ -1,6 +1,6 @@
 # Synced City Project
 
-🏅 **4th place — Multisynq Hackathon 2024** · Live demo: https://multisynq.tudu.dev
+🏅 **4th place — Multisynq Hackathon 2024** · Live demo: https://multisynq-hackathon-frontend.arrzdev.workers.dev
 
 ## Overview
 Synced City is a dynamic web application designed to enhance urban experiences by providing a platform for users to interact with city events, locations, and community-driven content.
